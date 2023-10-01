@@ -1,7 +1,9 @@
+import DrillDownForm from './components/features/DrillDownForm';
+
 function App() {
   return (
     <div className="p-12">
-      <h1 className="text-3xl mb-8 font-bold">Drill Down Form</h1>
+      <DrillDownForm />
     </div>
   );
 }
