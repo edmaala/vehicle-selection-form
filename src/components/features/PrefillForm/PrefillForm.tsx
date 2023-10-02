@@ -20,7 +20,7 @@ function PrefillForm() {
   return (
     <div>
       <h2 className="text-2xl mb-8 font-bold">Select a Vehicle</h2>
-      <div className="flex flex-col space-y-4">
+      <div className="space-x-16">
         <Button onClick={handleTeslaBtn}>Tesla Model 3 Performance</Button>
         <Button onClick={handleBmwBtn}>BMW 130d xDrive 26d</Button>
       </div>
