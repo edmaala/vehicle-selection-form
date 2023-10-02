@@ -8,6 +8,7 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react';
+import { VehicleBadge, VehicleMake, VehicleModel } from './models/ts-models';
 
 const VEHICLE_CONTEXT_DEFAULTS: ContextType = {
   selectedMake: null,
@@ -46,15 +47,7 @@ function VehicleDataProvider({ children }: Props) {
   );
 
   const prefillVehicleData = useCallback(
-    ({
-      make,
-      model,
-      badge,
-    }: {
-      make: string;
-      model: string;
-      badge: string;
-    }) => {
+    ({ make, model, badge }: PrefillFnArgs) => {
       setSelectedMake(make);
       setSelectedModel(model);
       setSelectedBadge(badge);
@@ -87,21 +80,21 @@ type Props = {
 };
 
 type ContextType = {
-  selectedMake?: string | null;
-  selectedModel?: string | null;
-  selectedBadge?: string | null;
-  setSelectedMake: Dispatch<SetStateAction<string | undefined | null>>;
-  setSelectedModel: Dispatch<SetStateAction<string | undefined | null>>;
-  setSelectedBadge: Dispatch<SetStateAction<string | undefined | null>>;
-  prefillVehicleData: ({
-    make,
-    model,
-    badge,
-  }: {
-    make: string;
-    model: string;
-    badge: string;
-  }) => void;
+  selectedMake?: VehicleMake | null;
+  selectedModel?: VehicleModel | string | null;
+  selectedBadge?: VehicleBadge | null;
+  setSelectedMake: Dispatch<SetStateAction<VehicleMake | undefined | null>>;
+  setSelectedModel: Dispatch<
+    SetStateAction<VehicleModel | string | undefined | null>
+  >;
+  setSelectedBadge: Dispatch<SetStateAction<VehicleBadge | undefined | null>>;
+  prefillVehicleData: (args: PrefillFnArgs) => void;
+};
+
+type PrefillFnArgs = {
+  make: VehicleMake;
+  model: VehicleModel;
+  badge: VehicleBadge;
 };
 
 export default VehicleDataProvider;
