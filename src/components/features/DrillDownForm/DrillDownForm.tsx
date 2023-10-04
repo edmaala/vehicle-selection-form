@@ -15,7 +15,7 @@ function DrillDownForm() {
     vehicleModelObj?.[selectedModel as VehicleModel] ?? [];
 
   return (
-    <div>
+    <div className="text-center z-20 relative bg-purple-100 py-8 px-4 pb-32 h-full">
       <h1 className="text-3xl mb-8 font-bold">Drill Down Form</h1>
       <form
         className="space-y-4"
