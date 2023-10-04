@@ -11,8 +11,8 @@ function VehicleBadgeDropdown({ options }: Props) {
   return (
     <Select
       options={options}
-      name="model"
-      id="model"
+      name="badge"
+      id="badge"
       nullValueText="- Select vehicle badge -"
       value={selectedBadge}
       onChange={handleBadgeChange}

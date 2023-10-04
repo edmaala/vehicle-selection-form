@@ -8,6 +8,7 @@ function Select({ options, nullValueText, name, id, onChange, value }: Props) {
       className="p-4 border border-gray-200 min-w-full"
       onChange={onChange}
       value={value ?? ''}
+      required
     >
       <option value="">{nullValueText}</option>
       {options.map((optionValue) => (

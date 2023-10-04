@@ -1,4 +1,3 @@
-import { FormEvent } from 'react';
 import { useVehicleContext } from '../../../vehicle-data-provider';
 import VEHICLE_MODELS from '../../../data';
 import VehicleMakeDropdown from './VehicleMakeDropdown';
@@ -15,18 +14,15 @@ function DrillDownForm() {
   const vehicleBadgeObj: string[] =
     vehicleModelObj?.[selectedModel as VehicleModel] ?? [];
 
-  const handleDrillDownFormSubmit = (event: FormEvent) => {
-    event.preventDefault();
-
-    // TODO: Update handler for posting form data
-    // const drillDownFormData = new FormData(event.target as HTMLFormElement);
-    // const logBook = drillDownFormData.get('log-book');
-  };
-
   return (
     <div>
       <h1 className="text-3xl mb-8 font-bold">Drill Down Form</h1>
-      <form className="space-y-4" onSubmit={handleDrillDownFormSubmit}>
+      <form
+        className="space-y-4"
+        action={`${import.meta.env.VITE_API_URI}/upload`}
+        method="POST"
+        encType="multipart/form-data"
+      >
         <VehicleMakeDropdown options={Object.keys(VEHICLE_MODELS)} />
 
         {selectedMake && (
@@ -39,7 +35,7 @@ function DrillDownForm() {
 
         {selectedMake && selectedModel && selectedBadge && (
           <>
-            <FileInput id="log-book" />
+            <FileInput id="logbook" />
             <Button isSubmit>Submit</Button>
           </>
         )}
